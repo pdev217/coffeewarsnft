@@ -51,7 +51,7 @@ class Faq extends Component{
                     </Accordion.Item>
 
                     <Accordion.Item eventKey="4">
-                        <Accordion.Header>  How Do I Mint Coffee Wars? </Accordion.Header>
+                        <Accordion.Header>  How Do I Mint Coffee Wars NFT? </Accordion.Header>
                         <Accordion.Body>
                             <ul className="text-orange fontsize1-5vmax font-cooperBlack p-0 m-0 list-unstyled"> 
                             <li>  1) Download the metamask.io extension for the Chrome/Brave browser or app on mobile. This will allow you to make purchases with Ethereum and can be found in the extensions tab. If you are on mobile, you must use the Metamask App Browser. </li>

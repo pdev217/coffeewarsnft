@@ -872,7 +872,7 @@ function Home(){
                 <Row >   
                     <Col sm={8} className="position-relative text-center position-relative text-center offset-sm-2">
                         <img src="images/behind-hd.png" className="img-fluid" style={{ width: '81vmax' }} />
-                        <h1 className="font-acierdisplay shadow-white font-weight500 text-orange fontsize5vmax letterspace8px mb-0 position-absolute cafe-pump-hd align-items-center d-flex justify-content-center center-hd mt-2"> Who is Behind This? </h1>
+                        <h1 className="font-acierdisplay shadow-white font-weight500 text-orange fontsize3vmax letterspace8px mb-0 position-absolute cafe-pump-hd align-items-center d-flex justify-content-center center-hd mt-2"> Who is Behind This? </h1>
                     </Col>
 
                     <Col sm={12} className="w-100 text-center mt-4">
