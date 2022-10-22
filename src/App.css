@@ -1,0 +1,473 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+
+@font-face {
+  font-family: Acier-display;
+  src: url('./assets/fonts/Acier-DisplaySolid.woff');
+}
+@font-face {
+  font-family: CooperStdBlack;
+  src: url('./assets/fonts/CooperStdBlack.ttf');
+}
+@font-face {
+  font-family: CooperStdBlackItalic;
+  src: url('./assets/fonts/CooperStdBlackItalic.ttf');
+}
+body{
+	background-image: url('./assets/images/bg-body.jpg');
+	background-size: cover;
+	background-position: -1px;
+    overflow-x: hidden;
+    background-repeat: repeat;
+}
+.fontsize10px{ font-size: 10px; }
+.fontsize11px{ font-size: 11px; }
+.fontsize12px{ font-size: 12px; }
+.fontsize13px{ font-size: 13px; }
+.fontsize14px{ font-size: 14px; }
+.fontsize15px{ font-size: 15px; }
+.fontsize16px{ font-size: 16px; }
+.fontsize17px{ font-size: 17px; }
+.fontsize18px{ font-size: 18px; }
+.fontsize19px{ font-size: 19px; }
+.fontsize20px{ font-size: 20px; }
+.fontsize21px{ font-size: 21px; }
+.fontsize22px{ font-size: 22px; }
+.fontsize23px{ font-size: 23px; }
+.fontsize24px{ font-size: 24px; }
+.fontsize25px{ font-size: 25px; }
+.fontsize26px{ font-size: 26px; }
+.fontsize27px{ font-size: 27px; }
+.fontsize28px{ font-size: 28px; }
+.fontsize29px{ font-size: 29px; }
+.fontsize30px{ font-size: 30px; }
+.fontsize31px{ font-size: 31px; }
+.fontsize32px{ font-size: 32px; }
+.fontsize33px{ font-size: 33px; }
+.fontsize34px{ font-size: 34px; }
+.fontsize35px{ font-size: 35px; }
+.fontsize36px{ font-size: 36px; }
+.fontsize37px{ font-size: 37px; }
+.fontsize38px{ font-size: 38px; }
+.fontsize39px{ font-size: 39px; }
+.fontsize40px{ font-size: 40px; }
+.fontsize41px{ font-size: 41px; }
+.fontsize42px{ font-size: 42px; }
+.fontsize43px{ font-size: 43px; }
+.fontsize44px{ font-size: 44px; }
+.fontsize45px{ font-size: 45px; }
+.fontsize1vmax{ font-size: 1vmax; }
+.fontsize1-5vmax{ font-size: 1.5vmax; }
+.fontsize2vmax{ font-size: 2vmax; }
+.fontsize2-5vmax{ font-size: 2.5vmax; }
+.fontsize3vmax{ font-size: 3vmax; }
+.fontsize3-5vmax{ font-size: 3.5vmax; }
+.fontsize4vmax{ font-size: 4vmax; }
+.fontsize4-5vmax{ font-size: 4.5vmax; }
+.fontsize5vmax{ font-size: 5vmax; }
+.fontsize5-5vmax{ font-size: 5.5vmax; }
+.fontsize6vmax{ font-size: 6vmax; }
+.fontsize7vmax{ font-size: 7vmax; }
+.font-weight400 { font-weight: 400; }
+.font-weight500 { font-weight: 500; }
+.font-weight600 { font-weight: 600; }
+.font-weight700 { font-weight: 700; }
+.font-weight800 { font-weight: 800; }
+.font-acierdisplay{  font-family: Acier-display !important; }
+.font-chelsea{ font-family: 'Chelsea Market', cursive; }
+.font-cooperBlack{ font-family: CooperStdBlack; }
+.font-cooperitalic { font-family: CooperStdBlackItalic; }
+.font-sourcesans{ font-family: 'Source Sans Pro', sans-serif; }
+.text-white{ color: #fff; }
+.text-lightyellow{ color: #f2fb04; }
+.text-lightred { color: #fc6104; }
+.text-red { color: #d20325; }
+.text-purple { color: #7a19ca; }
+.text-blue{ color: #5865f2; }
+.text-lightgreen { color: #1bfa04; }
+.text-orange{ color: #fbc401; }
+.text-green { color: #5cff00; }
+.text-yellow { color: #f3ce13 !important; }
+.bg-red { background-color: #de0d00 !important; }
+.bg-pink { background-color: #c801d4 !important; }
+.bg-darkpink { background-color: #9101d4; }
+.bg-purple { background-color: #5865f2 !important; }
+.bg-yellow { background-color: #f3ce13 !important; }
+.bg-green { background-color: #24bb01 !important; }
+.border-red { border-color: #de0d00 !important; }
+.border-pink { border-color: #c801d4 !important; }
+.border-green { border-color: #24bb01 !important; }
+.border-radius6px { border-radius: 6px; }
+.border-radius10px { border-radius: 10px; }
+.border-radius15px { border-radius: 15px; }
+.border-radius25px { border-radius: 25px; }
+.pt-6{ padding-top: 4.5rem; }
+.pt-7{ padding-top: 6.0rem; }
+.pt-8{ padding-top: 7.5rem; }
+.pt-9{ padding-top: 9.0rem; }
+.pb-6{ padding-bottom: 4.5rem; }
+.pb-7{ padding-bottom: 6.0rem; }
+.pb-8{ padding-bottom: 7.5rem; }
+.pb-9{ padding-bottom: 9.0rem; }
+.lineheight0-8 { line-height: 0.8; }
+.lineheight1 { line-height: 1; }
+.lineheight1-3 { line-height: 1.3; }
+.lineheight1-5 { line-height: 1.5; }
+.lineheight2 { line-height: 2; }
+.letterspace1px{ letter-spacing: 1px; }
+.letterspace2px{ letter-spacing: 2px; }
+.letterspace3px{ letter-spacing: 3px; }
+.letterspace4px{ letter-spacing: 4px; }
+.letterspace5px{ letter-spacing: 5px; }
+.letterspace6px{ letter-spacing: 6px; }
+.letterspace8px{ letter-spacing: 8px; }
+.letterspace9px{ letter-spacing: 9px; }
+.letterspace12px{ letter-spacing: 12px; }
+.shadow-white { text-shadow: 3px 3px 1px #fff; }
+.shadow-purple { text-shadow: 3px 2px 1px #8334d1; }
+.shadow-red { text-shadow: 3px 2px 1px #de0d00; }
+.shadow-green { text-shadow: 3px 2px 1px #6cbf45; }
+.shadow-yellow { text-shadow: 3px 2px 1px #fbd300; }
+.shadow-pink { text-shadow: 3px 2px 1px #ff00f0; }
+.shadow-orange { text-shadow: 3px 2px 1px #fc6104; }
+.max-width300{ max-width: 300px }
+.max-width400{ max-width: 400px }
+.max-width500{ max-width: 500px }
+.max-width600{ max-width: 600px }
+.outline-none { outline: none !important; 
+box-shadow: 0px 0px !important; }
+.hoverbtn1:hover, .hoverbtn1:active, .hoverbtn1:focus {
+    background: white !important;
+    color: #de0d00 !important;
+}
+.hoverbtn2:hover, .hoverbtn2:active, .hoverbtn2:focus {
+    background: white !important;
+    color: #c801d4 !important;
+}
+.hoverbtn3:hover, .hoverbtn3:active, .hoverbtn3:focus{
+  background-color: #000 !important;
+  color: #fff !important;
+}
+.hoverbtn4:hover, .hoverbtn4:active, .hoverbtn4:focus{
+        background-color: #fff !important;
+        color: #24bb01 !important;
+}
+
+.animated_duration1s{ animation-duration: 1s; }
+.animated_duration2s{ animation-duration: 2s; }
+.animated_duration3s{ animation-duration: 3s; }
+.animated_duration4s{ animation-duration: 4s; }
+.animated_duration5s{ animation-duration: 5s; }
+.animated_duration6s{ animation-duration: 6s; }
+.animated_duration7s{ animation-duration: 7s; }
+.animated_duration8s{ animation-duration: 8s; }
+
+
+.header-navbar .navbar-nav .nav-item a:hover, .header-navbar .navbar-nav .nav-item a:active {
+  color: #e8dc20 !important;
+}
+.bg-about { width: 49vmax; }
+.center-hd{ left: 0; right: 0; top: 0; }
+.cafe-pump-hd { bottom: 0; }
+.nft-exp-box img {
+  width: 75%;
+  box-shadow: 0px 0px 17px 4px #fbc401;
+  transition: all 0.5s ease;
+}
+.nft-exp-box:hover img{ transform: translate(0px, -21px) scale(1.3); }
+.mt-up { margin-top: -2em !important; }
+.custom-top { margin-top: 9rem; }
+.img-effect img { transition: all 0.4s ease; }
+.img-effect:hover img {
+  transform: scale(1.2);
+}
+.img-effect-s {
+  max-width: 200px;
+  width: 100%;
+  margin: auto;
+}
+
+.img-effect-c {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+}
+
+.banner-text {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 36%;
+  right: 0;
+}
+.header-navbar {
+  max-width: 1270px !important;
+  margin: auto;
+}
+.timerclock .bg-clock span {
+  font-weight: 300;
+  display: block;
+  font-size: 30px;
+  margin: 0px;
+  line-height: 1;
+}
+.timerclock {
+  background: #293129;
+  padding: 10px;
+  box-shadow: 1px 3px 33px 10px #f89f03;
+  border-radius: 12px;
+  font-size: 27px;
+  max-width: 274px;
+}
+.timerclock .bg-clock {
+  background: #000000;
+  margin: 0px 3px;
+  padding: 7px 5px 7px;
+  border-radius: 4px;
+  border: 1px solid rgb(255 255 255 / 43%);
+  width: 58px;
+  line-height: 1; 
+  font-size: 15px;   
+}
+.heading-h { height: 10vh; }
+.flip-animated:hover img {  transform: rotateY(360deg) scale(1 ,1.3); }
+.flip-animated img {
+  transition: all 0.4s ease;
+  position: relative;
+}
+.collapsed .f-show { display: block; }
+.f-show{ display: none; }
+.l-show{ display: block; }
+.collapsed .l-show { display: none; }
+
+
+.dot{
+width:35px;
+height:35px;
+position:absolute;
+top: 0;
+right: 0;
+left: 0;
+background: url('./assets/images/beans.png');
+background-size: contain;
+background-repeat: no-repeat;
+}
+.equal-content {  height: 24vmax; }
+.nft-video:hover video { display: block; }
+.nft-video video, .nft-video:hover img  { display: none; }
+.nft-video img{ width: 100%; }
+.nft-video:hover video{ transform: scale(1.3); }
+.nft-video video { transition: all 0.8s ease; border: 2px solid #bd6621; }
+.mt-pull-up{ margin-top: -2vmax; }
+.btn-close {
+  filter: invert(1);
+  opacity: 1;
+  outline: none !important;
+  position: absolute;
+  right: -11px;
+  font-size: 17px;
+  top: 12.3em;
+  z-index: 1;
+  border: 1px solid #000;
+  box-shadow: 0px 0px !important;
+}
+.maxwidth280{ max-width: 280px; }
+.maxwidth300{ max-width: 300px; }
+.faq-sec .accordion-item {
+  background: transparent;
+  border: 0px;
+}
+.faq-sec .accordion-item .accordion-button {
+  background: #a537ff;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Acier-display';
+  font-size: 1.9vmax;
+  letter-spacing: 0.7px;
+  border-radius: 2px 2px;
+  border: 3px solid #ffc300;
+  box-shadow: 0px 0px;
+  padding-top: 20px;
+}
+.faq-sec .accordion-item .accordion-button:after {
+  background-image: url('./assets/images/sm-arrow2.png');
+  transform: rotate(0deg);
+}
+.faq-sec .accordion-item .accordion-button.collapsed:after {
+  background-image: url('./assets/images/sm-arrow1.png');
+}
+.faq-sec .accordion-item .accordion-header { margin-top: 15px; }
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.video-modal .modal-content {
+  background-color: transparent;
+  border: 0px;
+}
+.video-modal .modal-header {
+  border: 0px;
+  padding: 0px;
+}
+.video-modal .modal-header .btn-close {
+  top: 51px;
+  opacity: 1;
+}
+.video-modal .modal-dialog {
+  margin: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.coming-btn {
+  position: absolute;
+  left: 0;
+  color: #c60915;
+  font-weight: 600;
+  transform: rotate(-34deg);
+  font-family: 'CooperStdBlackItalic';
+  font-size: 15px;
+  top: 3px;
+  right: 0;
+  margin: auto;
+}
+.bonus-list-img{
+  width: 60%;
+  box-shadow: 1px 1px 11px 2px #fc6704;
+  transform: rotate(-12deg);
+}
+.AppMain {
+  width: 100%;
+  overflow: hidden;
+}
+.credit-text {
+  right: 0;
+  top: 6%;
+}
+.credit-text img {
+  transform: rotate(114deg);
+  width: 175px;
+  display: inline-block;
+}
+.credit-text p {
+  display: inline-block;
+  max-width: 191px;
+  font-size: 22px;
+  line-height: 1.2;
+  float: right;
+  margin-top: 20px;
+}
+.rotate-20{
+  transform: rotate(-20deg);
+}
+.film-header img {
+  box-shadow: 1px 1px 10px 2px #c801d4;
+}
+.film-header h4 {
+  position: absolute;
+  left: 27px;
+  top: 26px;
+  z-index: 1;
+  transform: rotate(-28deg);
+  text-shadow: 1px 0px 4px #000;
+  font-size: 20px;
+}
+.film-header h5 {
+  position: relative;
+  text-shadow: 1px 1px 2px #000;
+  letter-spacing: 1px;
+  font-size: 21px;
+  margin-top: 6px;
+}
+.mt-extra-up{ margin-top: -10% !important; }
+
+.exclusively {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+iframe {
+  z-index: -1 !important;
+}
+
+@media only screen and (max-width : 640px) {
+  .fontsize3vmax { font-size: 2vmax; }
+  .fontsize3-5vmax, .fontsize4-5vmax {  font-size: 2.5vmax; }
+  .animate__animated { visibility: visible !important; animation-name: auto !important; }
+  .heading-h { height: auto; }
+  .letterspace2px { letter-spacing: 1px; }
+  .empty-height { margin: 0px !important; }
+  .fontsize4vmax, .fontsize5vmax { font-size: 3vmax; }
+  .fontsize5-5vmax { font-size: 3.5vmax; }
+  .fontsize6vmax {  font-size: 4vmax; }
+  .mt-up {  margin-top: 0em !important; }
+  .flip-animated { text-align: center; }
+  .flip-animated img {
+      width: 100%;
+      max-width: 80%;
+      margin: auto;
+  }
+  .timerclock {
+      max-width: 247px;
+      margin: 10px auto 20px;
+  }
+  .equal-content {  height: auto }
+  .nft-video:hover video{ transform: scale(1.0); }
+  .mt-pull-up { margin-top: 0px; }
+  .m-bottom{  bottom: 14px !important;  }
+  button.navbar-toggler { border-color: #fff; border: 0px; }
+button.navbar-toggler .navbar-toggler-icon {  filter: invert(1); }
+.mt-extra-up {  margin-top: 4%!important; }
+.film-header {  margin-bottom: 33px; }
+.credit-text p {
+    max-width: 78px;
+    font-size: 9px;
+}
+.credit-text img { width: 63px; }
+.custom-top {  margin-top: 1rem; }
+  }
+  
+  
+
