@@ -344,7 +344,7 @@ function Home(){
                             </Row>
 
                             <Row>
-                            <Col sm={4} className="mt-4 p-0">
+                            <Col sm={4} className="mt-4 p-0  d-flex flex-column">
                                     <Col className="w-100 text-center">
                                                 <img src="images/coffeecup.png" className="img-fluid animate__animated animate__bounce animate__infinite" width="60%" />
                                         </Col>
@@ -368,7 +368,7 @@ function Home(){
                             </Col>
 
                         {/* double shot */}
-                            <Col sm={4} className="mt-4 p-0">
+                            <Col sm={4} className="mt-4 p-0 d-flex flex-column">
                                     <Col className="w-100 text-center">
                                                 <img src="images/doubleshot.png" className="img-fluid animate__animated animate__shakeX animate__infinite" width="60%" />
                                         </Col>
@@ -389,7 +389,7 @@ function Home(){
 
 
                             {/* Quad Heart shot */}
-                                <Col sm={4} className="col-sm-4 mt-4 p-0">
+                                <Col sm={4} className="col-sm-4 mt-4 p-0 d-flex flex-column">
                                         <Col className="w-100 text-center">
                                             <img src="images/quadshot.png" className="img-fluid animate__animated animate__rubberBand animate__infinite" width="71%" />
                                         </Col>
@@ -523,7 +523,7 @@ function Home(){
                                 <img src="images/arrow.png" alt="arrow" width="206" className="align-bottom" style={{ margin: '0px -4em' }} />
                             </Col>
                             <Col sm={5} className="mt-auto pb-3 ms-3 ms-md-0">
-                                <h3 className="text-lightyellow font-acierdisplay mb-2"> * THE FIRST 100 BUYERS OF THIS LEVEL GET THEIR PICTURE IN THE FILM. </h3>
+                                <h3 className="text-lightyellow font-acierdisplay mb-2" style={ {lineHeight:"26px"} }> * THE FIRST 100 BUYERS OF THIS LEVEL GET THEIR PICTURE IN THE FILM. </h3>
                                 <p className="text-white lineheight1 font-acierdisplay fontsize17px">We must receive your picture before  December 1st, 2022 for your picture 
                                 to be in the final version of the film to be released worldwide January 2023. please note you will not be seen in the early promotional screenings 
                                 prior to the streamers launch. </p>
@@ -856,7 +856,7 @@ function Home(){
                         <Col sm={12} className="w-100 text-center mx-auto" style={{ maxWidth: '980px' }}>
                             <h2 className="text-red font-acierdisplay letterspace1px"> Follow Our Progress </h2>
                             <p className="text-white font-acierdisplay lineheight1-3 fontsize2vmax mt-4 font-weight400"> We will hold monthly online meetings connecting our <span className="text-lightred"> NFT partners </span> with the artists and filmmakers who are bringing
-                             <span className="text-lightred"> coffee wars </span> to the world. And when the films are complete, our nft holders will get first premiere access to the film before anyone else has seen it. Our intention is to shake things up. Enough waiting around for some big studio with their bureacratic pencil-pushers. We are
+                             <span className="text-lightred"> coffee wars </span> to the world. And when the films are complete, our nft holders will get first premiere access to the film before anyone else has seen it. Our intention is to shake things up. Enough waiting around for some big studio with their bureaucratic pencil-pushers. We are
                               <span className="text-lightred"> coffee wars</span>,  and we are ready to get our caffeine on!</p>
                             <a href="https://discord.gg/KDF5HKa3mb" target="_blank" className="bg-purple rounded font-acierdisplay text-white fontsize2vmax outline-none px-4 d-inline-block text-decoration-none pt-2 pb-1 letterspace1px hoverbtn3">  Discord </a>
                         </Col> 
@@ -869,47 +869,51 @@ function Home(){
 
               {/* Bethind This */}
               <Container className="pt-5 pb-5">
-                <Row className="align-items-baseline">   
-                    <Col sm={12} className="w-100 position-relative text-center ">
+                <Row >   
+                    <Col sm={8} className="position-relative text-center position-relative text-center offset-sm-2">
                         <img src="images/behind-hd.png" className="img-fluid" style={{ width: '81vmax' }} />
                         <h1 className="font-acierdisplay shadow-white font-weight500 text-orange fontsize5vmax letterspace8px mb-0 position-absolute cafe-pump-hd align-items-center d-flex justify-content-center center-hd mt-2"> Who is Behind This? </h1>
                     </Col>
 
                     <Col sm={12} className="w-100 text-center mt-4">
-                      <p className="text-white font-acierdisplay fontsize2-5vmax lineheight1-3"> The filmmakers behind the COFFEE WARS NFT are highly experienced moviemakers and the creators of many studio and independent films. </p>
+                      <p className="text-white font-acierdisplay fontsize1-5vmax lineheight1-3 text-white font-acierdisplay fontsize1-5vmax lineheight1-3 col-8 offset-2"> 
+                        The filmmakers behind the <span className="text-lightred">Coffee wars NFT</span> are Highly experienced moviemakers and the creators of many made studio and independent films
+                        {/* The filmmakers behind the <span className="text-lightred">COFFEE WARS NFT</span> are highly experienced moviemakers and the creators of many studio and independent films.  */}
+                    </p>
                     </Col>
 
                     
-                    <Col sm={3} className="mt-5">
-                      <Col className="w-100 text-center">
-                            <Col className="mb-4 img-effect-s overflow-hidden" style={{ boxShadow: '1px 1px 13px 2px #fff' }}>
+                    <Col md={3} className="mt-5">
+                      <Col className="w-100 text-center mt-md-5">
+                            <Col className="mb-4 img-effect-s img-effect overflow-hidden" style={{ boxShadow: '1px 1px 13px 2px #fff' }}>
                                 <img src="images/img02.jpg" className="img-fluid" />
                             </Col>
                             <h4 className="text-lightred font-acierdisplay mb-2"> Randall Miller </h4>
-                            <p className="text-white font-sourcesans font-weight600  max-width300 mx-auto fontsize1-5vmax"> Writer/Director Randall Miller is the director of CBGB, Bottle Shock, Coffee Wars, Houseguest and Class Act. Check him out here: </p>
+                            <p className="text-white font-sourcesans font-weight600 font-normal max-width300 mx-auto"> Writer/Director Randall Miller is the director of CBGB, Bottle Shock, Coffee Wars, Houseguest  and Class Act <br />Check him out here:</p>
                             <a href="https://www.imdb.com/name/nm0589168/" target="_blank" className="text-black bg-yellow rounded d-inline-block font-sourcesans text-decoration-none px-5 pt-2 pb-2 font-weight700 hoverbtn3"> IMDb </a>
                       </Col>
                     </Col>
 
-                    <Col sm={6} className="mt-5">
-                        <Col className="w-100 text-center">
-                                <Col className="mb-4 img-effect-c overflow-hidden" style={{ boxShadow: '1px 1px 13px 2px #fff' }}>
-                                    <img src="images/img04.jpg" className="img-fluid w-100" />
+                    <Col md={6} className="mt-5">
+                        <Col className="w-100 text-center position-relative">
+                                <Col className="mb-4 img-effect-c img-effect overflow-hidden position-relative" style={{ boxShadow: '1px 1px 13px 2px #fff' }}>
+                                    <img src="images/img04.png" className="img-fluid w-100 h-100" />
                                 </Col>
-                                <h4 className="text-lightred font-acierdisplay mb-2"> Michael and Randy </h4>
-                                <p className="text-white font-sourcesans font-weight600 fontsize1-5vmax max-width400 mx-auto"> Michael and Randy will be conducting monthly on air AMAs</p>
-                                <p className='text-yellow font-sourcesans text-uppercase exclusively'>exclusively for all NFT holders</p>
-                                <p className="text-white font-sourcesans font-weight600 fontsize1-5vmax max-width500 mx-auto">on the film business, their experiences, entrepreneurship and everything in-between.
+                                    <img src="images/reward.png" alt="reward" className='reward-png' />
+                                {/* <h4 className="text-lightred font-acierdisplay mb-2"> Michael and Randy </h4> */}
+                                <p className="text-white font-sourcesans font-weight600 font-normal max-width500 mx-auto mb-2"> Michael and Randy will be conducting monthly on air AMAs</p>
+                                <h4 className='text-yellow font-acier text-uppercase mb-0' style={{letterSpacing: "2px"}}>exclusively for all NFT holders</h4>
+                                <p className="text-white font-sourcesans font-weight600 font-normal max-width500 mx-auto">on the film business, their experiences, entrepreneurship and <br /> everything in between.
                                     <br />A masterclass in how to navigate the entertainment business.
                                 </p>
                         </Col>
                     </Col>
 
-                  <Col sm={3} className="mt-5">
-                      <Col className="w-100 text-center">
-                            <Col className="mb-4 img-effect-s overflow-hidden" style={{ boxShadow: '1px 1px 13px 2px #fff' }}><img src="images/img03.jpg" className="img-fluid" /></Col>
+                  <Col md={3} className="mt-5">
+                      <Col className="w-100 text-center mt-md-5">
+                            <Col className="mb-4 img-effect-s img-effect overflow-hidden" style={{ boxShadow: '1px 1px 13px 2px #fff' }}><img src="images/img03.jpg" className="img-fluid" /></Col>
                             <h4 className="text-lightred font-acierdisplay mb-2"> Michael Davis </h4>
-                            <p className="text-white font-sourcesans font-weight600 fontsize1-5vmax max-width300 mx-auto"> Writer/Director Michael Davis is the director of Shoot 'Em Up, 100 Girls and 8 Days A Week. Check him out here: </p>
+                            <p className="text-white font-sourcesans font-weight600 font-normal max-width300 mx-auto"> Writer/Director Michael Davis is the director of Shoot 'Em Up,<br /> 100 Girls and  8 Days A Week. <br />Check him out here: </p>
                             <a href="https://www.imdb.com/name/nm0205157/" target="_blank" className="text-black bg-yellow rounded d-inline-block font-sourcesans text-decoration-none px-5 pt-2 pb-2 font-weight700 hoverbtn3"> IMDb </a>
                       </Col>
                   </Col>

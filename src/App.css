@@ -186,9 +186,31 @@ box-shadow: 0px 0px !important; }
   width: 100%;
   margin: auto;
 }
+.font-acier {
+  font-family: 'Acier-display';
+}
+
+.font-arial {
+  font-family: Arial Black !important;
+}
+
+.font-normal {
+  font-size: 1rem;
+}
+.reward-png {
+  position: absolute;
+  top: -26px;
+  left: 0.7vw;
+}
+
+@media (max-width: 1200px) {
+  .reward-png {
+    left: -2.3vw;
+  }
+}
 
 .img-effect-c {
-  max-width: 400px;
+  max-width: 510px;
   width: 100%;
   margin: auto;
 }

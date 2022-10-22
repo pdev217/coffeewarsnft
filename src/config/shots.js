@@ -190,6 +190,24 @@ const quadShots = [
         title: "Mona Lisa",
         mov: 'CW_014_Mona Lisa.mov'
     },
+    {
+        imgUrl: 'images/nfts19.jpg',
+        videoUrl: 'https://cbgb.mypinata.cloud/ipfs/QmUZJM489tY6S1U6ZXEqQZdzaFX6Gvpm28DCQRVh6PnSxk/No%20Neck%20Dudes.mp4',
+        title: "NO-NECK DUDES",
+        mov: 'CW_015_No Neck Dudes.mov'
+    },
+    {
+        imgUrl: 'images/nfts20.jpg',
+        videoUrl: 'https://cbgb.mypinata.cloud/ipfs/QmUZJM489tY6S1U6ZXEqQZdzaFX6Gvpm28DCQRVh6PnSxk/Or%20Towed.mp4',
+        title: "OR TOWED",
+        mov: 'CW_016_Or Towed.mov'
+    },
+    {
+        imgUrl: 'images/nfts21.jpg',
+        videoUrl: 'https://cbgb.mypinata.cloud/ipfs/QmUZJM489tY6S1U6ZXEqQZdzaFX6Gvpm28DCQRVh6PnSxk/Pick%20Up%20The%20Beans.mp4',
+        title: "PICK UP THE BEANS",
+        mov: 'CW_017_Pick Up the Beans.mov'
+    },
 ]
 
 export { singleShots, quadShots }
