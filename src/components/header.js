@@ -13,11 +13,11 @@ function Header() {
         console.log("logged out");
     }
 
-    // useEffect(() => {
-    //     if(!account) {
-    //         authenticate()
-    //     }
-    // }, [account, authenticate])
+    useEffect(() => {
+        if(!account) {
+            authenticate()
+        }
+    }, [account, authenticate])
   
 
     console.log("---isAuthenticated", isAuthenticated)
