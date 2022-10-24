@@ -4,21 +4,28 @@ import Header from '../components/header';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import QuadShot from '../components/quadshot';
+import Spinner from 'react-bootstrap/Spinner';
 import Accordion from 'react-bootstrap/Accordion';
 import Gifcoffees2 from '../components/gifcoffees2';
 import { singleShots } from '../config/shots';
 import abi  from "../assets/CoffeeWars.json";
 
-import { useMoralis, useMoralisFile } from "react-moralis";
+import { useMoralis, useMoralisFile, useChain } from "react-moralis";
 import Web3 from "web3";
 import axios from "axios";
 
+//toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const web3 = new Web3(Web3.givenProvider);
 
-
 function Home(){
+        const { account } = useMoralis();
         const { saveFile } = useMoralisFile();
         const [show, setShow] = useState(false);
+        const [mintStatus, setMintStatus] = useState(false);
+        const { switchNetwork, chainId, chain } = useChain();
         
         const { user } = useMoralis();
         const [contract, setContract] = useState('');
@@ -30,6 +37,19 @@ function Home(){
             const contractCode = new web3.eth.Contract(abi.abi, process.env.REACT_APP_CONTRACT_ADDRESS);
             setContract(contractCode)
         },[])
+
+        useEffect(() => {
+            if(account) {
+                if(chainId != process.env.REACT_APP_CHAIN_ID) {
+                    switchNetwork(process.env.REACT_APP_CHAIN_ID)
+                }
+            }
+        }, [account])
+
+        const getBalance = async (address) => {
+            let balance = await web3.eth.getBalance(account);
+            return balance
+        }
 
         const getDataFromPinata = async (groupName) => {
             let selectedGroup;
@@ -65,7 +85,11 @@ function Home(){
                     type: "base64",
                     saveIPFS: true,
                     onSuccess: (result) => {return result.ipfs()},
-                    onError: (error) => console.log(error),
+                    onError: (error) => {
+                        console.log(error)
+                        setMintStatus(false)
+                        toast.error("Please connect your metamask")
+                    },
                 }
             );
         };
@@ -142,113 +166,164 @@ function Home(){
         }
 
         const singleMint = async (e) => {
-            let groupName = e.target.parentNode.parentNode.children[1].innerText;
-            console.log('-----groupName:', groupName)
+            let balance = await getBalance(account);
+            console.log("----balance", balance)
+            if(balance > web3.utils.toWei(String(process.env.REACT_APP_SINGLE_PRICE))) {
+                setMintStatus(true)
+                let groupName = e.target.parentNode.parentNode.children[1].innerText;
+                console.log('-----groupName:', groupName)
 
-            let selectedGroup = await getDataFromPinata(groupName+" NFTs");
+                let selectedGroup = await getDataFromPinata(groupName+" NFTs");
 
-            console.log(selectedGroup)
+                console.log(selectedGroup)
 
-            // console.log(String(groupName).toUpperCase() + 'Coffee Wars NFT LOG')
-            let fileName = String(groupName).toUpperCase() + ' Coffee Wars NFT LOG' //excel file name
-            console.log(fileName)
+                // console.log(String(groupName).toUpperCase() + 'Coffee Wars NFT LOG')
+                let fileName = String(groupName).toUpperCase() + ' Coffee Wars NFT LOG' //excel file name
+                console.log(fileName)
 
-            const excelData = await getExcelData(fileName);
+                const excelData = await getExcelData(fileName);
 
-            //get NFT randomly
-            const random = getRandomInt(2, excelData.length)
+                //get NFT randomly
+                const random = getRandomInt(2, excelData.length)
 
-            //metadata
-            const metadata = makeMetaData(selectedGroup, excelData, random)
+                //metadata
+                const metadata = makeMetaData(selectedGroup, excelData, random)
 
-            console.log(metadata)
+                console.log(metadata)
 
-            let metadataurl = await uploadFileToMoralis(metadata);
-            let tokenURI = "https://ipfs.moralis.io/ipfs/" + metadataurl._hash
-            console.log(tokenURI)
+                let metadataurl = await uploadFileToMoralis(metadata);
+                let tokenURI = "https://ipfs.moralis.io/ipfs/" + metadataurl._hash
+                console.log(tokenURI)
 
-            await contract.methods
-                .mint(String(tokenURI))
-                .send({ from: user.get("ethAddress"), value:web3.utils.toWei(String(process.env.REACT_APP_SINGLE_PRICE), "ether") })
-            console.log('----single minted')
+                contract.methods
+                    .mint(String(tokenURI))
+                    .send({ from: user.get("ethAddress"), value:web3.utils.toWei(String(process.env.REACT_APP_SINGLE_PRICE), "ether") })
+                    .then(() => setMintStatus(false))
+                    .catch((error) => {
+                        if(error) {
+                            setMintStatus(false)}
+                        }
+                    )
+                console.log('----single minted');
+            }else {
+                toast.warn(`To mint a single shot, ${process.env.REACT_APP_SINGLE_PRICE} ETH is required.`);
+            }
         }
 
         const doubleMint = async (e) => {
             e.preventDefault();
-            let selectedGroup = await getDataFromPinata("(DOUBLE SHOT)");
-            let metadataGroup = [];
-
-            const excelData = await getExcelData("GOLD CUPS Coffee Wars NFT LOG (DOUBLE SHOT)");
-
-            for (let i = 0; i < 10; i++) {
-                let random = getRandomInt(2, excelData.length)
-                let metadata = makeMetaData(selectedGroup, excelData, random)
-                let metadataurl = await uploadFileToMoralis(metadata);
-                metadataGroup.push(String("https://ipfs.moralis.io/ipfs/" + metadataurl._hash))
+            let balance = await getBalance(account);
+            console.log("----balance", balance)
+            if(Number(balance) > Number(web3.utils.toWei(String(process.env.REACT_APP_DOUBLE_PRICE)))) {
+                setMintStatus(true)
+                let selectedGroup = await getDataFromPinata("(DOUBLE SHOT)");
+                let metadataGroup = [];
+    
+                const excelData = await getExcelData("GOLD CUPS Coffee Wars NFT LOG (DOUBLE SHOT)");
+    
+                for (let i = 2; i < 102; i++) {
+                    // let random = getRandomInt(2, excelData.length)
+                    let metadata = makeMetaData(selectedGroup, excelData, i)
+                    let metadataurl = await uploadFileToMoralis(metadata);
+                    metadataGroup.push(String("https://ipfs.moralis.io/ipfs/" + metadataurl._hash))
+                    console.log(i)
+                }
+    
+                console.log(metadataGroup)
+                
+                await contract.methods
+                    .doubleMint(metadataGroup)
+                    .send({ from: user.get("ethAddress"), value:web3.utils.toWei(String(process.env.REACT_APP_DOUBLE_PRICE), "ether") })
+                    .then(() => setMintStatus(false))
+                    .catch((error) => {
+                        if(error) {
+                            setMintStatus(false)}
+                    })
+                    console.log('----minted')   
+            }else {
+                toast.warn(`To mint a double shot, ${process.env.REACT_APP_DOUBLE_PRICE} ETH is required.`);
             }
-
-            console.log(metadataGroup)
-            
-            await contract.methods
-                .doubleMint(metadataGroup)
-                .send({ from: user.get("ethAddress"), value:web3.utils.toWei(String(process.env.REACT_APP_DOUBLE_PRICE), "ether") })
-            console.log('----minted')
         }
 
         const quadMint = async (fileName) => {
-            let selectedGroup = await getDataFromPinata("(QUAD SHOT)");
-            const excelData = await getExcelData('CAFFEINATED VIDEO NFTs GIF LOG (QUAD SHOT)')
-            let selectedArray;
-            let excelFileName = fileName.replace(/[0-9]/g, '').replace("__", '_');
-            console.log(excelFileName)
+            let balance = await getBalance(account);
+            console.log("----balance", balance)
+            if(Number(balance) > Number(web3.utils.toWei(String(process.env.REACT_APP_QUAD_PRICE)))) {
+                setMintStatus(true)
+                let selectedGroup = await getDataFromPinata("(QUAD SHOT)");
+                const excelData = await getExcelData('CAFFEINATED VIDEO NFTs GIF LOG (QUAD SHOT)')
+                let selectedArray;
+                let excelFileName = fileName.replace(/[0-9]/g, '').replace("__", '_');
+                console.log(excelFileName)
 
-            excelData.map(e => {
-                if(String(e[1]) === String(excelFileName)) {
-                    selectedArray = e;
+                excelData.map(e => {
+                    if(String(e[1]) === String(excelFileName)) {
+                        selectedArray = e;
+                    }
+                })
+
+                console.log(selectedArray)
+
+                const metadata = {
+                    "name": selectedArray[1],
+                    "image": 'https://ipfs.io/ipfs/' + selectedGroup.ipfs_pin_hash+'/' + fileName,
+                    "attributes": [
+                        {
+                            "trait_type": "plaque inscription",
+                            "value": String(selectedArray[2]),
+                        },
+                        {
+                            "trait_type": "picture frame",
+                            "value": String(selectedArray[3]),
+                        },
+                        {
+                            "trait_type": "wall",
+                            "value": String(selectedArray[4]),
+                        },
+                        {
+                            "trait_type": "demensions",
+                            "value": String(selectedArray[5]),
+                        },
+                        {
+                            "trait_type": "character name",
+                            "value": String(selectedArray[6]),
+                        },
+                    ]
                 }
-            })
 
-            console.log(selectedArray)
+                let metadataurl = await uploadFileToMoralis(metadata);
+                let tokenUrl = 'https://ipfs.moralis.io/ipfs/' + metadataurl._hash
 
-            const metadata = {
-                "name": selectedArray[1],
-                "image": 'https://ipfs.io/ipfs/' + selectedGroup.ipfs_pin_hash+'/' + fileName,
-                "attributes": [
-                    {
-                        "trait_type": "plaque inscription",
-                        "value": String(selectedArray[2]),
-                    },
-                    {
-                        "trait_type": "picture frame",
-                        "value": String(selectedArray[3]),
-                    },
-                    {
-                        "trait_type": "wall",
-                        "value": String(selectedArray[4]),
-                    },
-                    {
-                        "trait_type": "demensions",
-                        "value": String(selectedArray[5]),
-                    },
-                    {
-                        "trait_type": "character name",
-                        "value": String(selectedArray[6]),
-                    },
-                ]
+                contract.methods
+                    .mint(String(tokenUrl))
+                    .send({ from: user.get("ethAddress"), value:web3.utils.toWei(String(process.env.REACT_APP_QUAD_PRICE), "ether") })
+                    .then(() => setMintStatus(false))
+                    .catch((error) => {
+                        if(error) {
+                            setMintStatus(false)}
+                    })
+                console.log('----quad minted')
+            }else {
+                toast.warn(`To mint a double shot, ${process.env.REACT_APP_QUAD_PRICE} ETH is required.`);
             }
-
-            let metadataurl = await uploadFileToMoralis(metadata);
-            let tokenUrl = 'https://ipfs.moralis.io/ipfs/' + metadataurl._hash
-
-            await contract.methods
-                .mint(String(tokenUrl))
-                .send({ from: user.get("ethAddress"), value:web3.utils.toWei(String(process.env.REACT_APP_QUAD_PRICE), "ether") })
-            console.log('----quad minted')
         }
 
         return(
             <div className="AppMain">
             <Header />
+
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
 
             {/* Banner */}
             <Container fluid>
@@ -441,14 +516,22 @@ function Home(){
                                     <img src={e.url} alt={e.title} className="img-fluid mb-3" />
                                     <h5 className="font-acierdisplay text-white mb-0 lineheight0-8 letterspace1px"> {e.title}</h5>
                                     <p className="text-orange font-weight700 fontsize17px"> {e.desc} </p>
-                                    <Col className="w-100">
-                                        <button 
-                                        className="bg-red border-red fontsize13px font-acierdisplay rounded text-white btn outline-none pt-2 pb-1 hoverbtn1"
-                                        onClick={singleMint}
-                                        > 
-                                            Mint Single Shot 
-                                        </button>
-                                    </Col>
+                                    <button 
+                                    className="bg-red border-red fontsize13px font-acierdisplay rounded text-white btn outline-none pt-2 pb-1 hoverbtn1"
+                                    onClick={singleMint}
+                                    disabled={mintStatus}
+                                    > 
+                                        <span className={mintStatus?'d-none':'d-block'}>Mint Single Shot</span>
+                                        <div className={mintStatus?'d-block':'d-none'}>
+                                            <Spinner
+                                                as="span"
+                                                animation="grow"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                            /> loading
+                                        </div>
+                                    </button>
                                 </Col>
                             </Col>
                         ))
@@ -535,7 +618,22 @@ function Home(){
                         <img src="images/slide1.jpg" className="img-fluid w-100 mb-3" />
 
                         <h5 className="text-lightyellow font-cooperBlack"> Buy a Double Shot and appear in <span className="text-white text-uppercase">Coffee Wars! </span> </h5> 
-                        <a href="#" className="bg-green text-white font-acierdisplay rounded text-decoration-none pt-3 pb-3 px-2 btn outline-none mt-2 hoverbtn4"> Mint Double Shot Level </a>
+                        <Button 
+                        className="bg-green text-white font-acierdisplay rounded text-decoration-none pt-3 pb-3 px-2 btn outline-none mt-2 hoverbtn4" 
+                        onClick={doubleMint}
+                        disabled={mintStatus}
+                        > 
+                            <span className={mintStatus?'d-none':'d-block'}>Mint Double Shot Level</span>
+                            <div className={mintStatus?'d-block':'d-none'}>
+                                <Spinner
+                                    as="span"
+                                    animation="grow"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                /> loading
+                            </div>
+                        </Button>
                 </Col>
 
                 </Row>
@@ -570,7 +668,7 @@ function Home(){
 
 
             {/* Quot Shot */}
-            <QuadShot onClick={quadMint} />
+            <QuadShot onClick={quadMint} status={mintStatus} />
             {/* Quot Shot */}
 
 

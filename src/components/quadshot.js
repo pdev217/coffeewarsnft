@@ -2,6 +2,7 @@ import React,{ useEffect } from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import $ from "jquery";
 import { quadShots } from "../config/shots"
+import Spinner from 'react-bootstrap/Spinner';
 
         
 function QuadShot (props) {
@@ -18,7 +19,7 @@ function QuadShot (props) {
 
     const quadShot = (e) => {
         e.preventDefault();
-        let fileName = e.target.getAttribute("id");
+        let fileName = e.target.parentNode.getAttribute("id");
         props.onClick(fileName)
     }
     
@@ -49,7 +50,23 @@ function QuadShot (props) {
                                 </video>
                                 </Col>
                                 <h5 className="text-lightyellow font-acierdisplay letterspace1px"> {e.title} </h5>
-                                <button id={e.mov} onClick={quadShot} className="d-inline-block bg-darkpink border-radius6px text-white pt-2 pb-2 px-3 font-acierdisplay text-decoration-none fontsize15px hoverbtn2"> Mint Quad Shot Level </button>
+                                <button 
+                                id={e.mov} 
+                                onClick={quadShot} 
+                                className="d-inline-block bg-darkpink border-radius6px text-white pt-2 pb-2 px-3 font-acierdisplay text-decoration-none fontsize15px hoverbtn2"
+                                disabled={props.status}
+                                > 
+                                    <span className={props.status?'d-none':'d-block'}>Mint Quad Shot Level</span>
+                                    <div className={props.status?'d-block':'d-none'}>
+                                        <Spinner
+                                            as="span"
+                                            animation="grow"
+                                            size="sm"
+                                            role="status"
+                                            aria-hidden="true"
+                                        /> loading
+                                    </div>
+                                </button>
                         </Col>
                     </Col>
                 )

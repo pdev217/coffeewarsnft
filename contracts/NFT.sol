@@ -6,25 +6,28 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 contract CoffeeWars is ERC721, ERC721Enumerable, ERC721URIStorage {
     using SafeMath for uint256;
+    uint public drop_unlock_time = 1667260800;
     struct owner {
         address addr;
         uint percent;
     }
-    owner A = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 59); //59%
-    owner B = owner(0x653229a1c558b87cba440bb82d296Bd1E572C23D, 10); 
-    owner C = owner(0xfe78bf9d611c6aAB734A69810E79e8220278c897, 10); 
-    owner D = owner(0xFFE7aFE2b1Fa96045e91e566a903a230CbB99f70, 5); 
-    owner E = owner(0x1B86c2909C765eC3Be7Ad953E3Bd6f3c748EE07B, 2); //Wallet E 2% Nirupam Nigham
-    owner F = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2); 
-    owner G = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2); 
-    owner H = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2); 
-    owner I = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2); 
-    owner J = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2); 
-    owner K = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2); 
-    owner L = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2); 
-    owner M = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2); 
-    owner N = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2); 
-    owner O = owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2);
+    address[15] public wallets = [
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 59), 
+        owner(0x653229a1c558b87cba440bb82d296Bd1E572C23D, 10), 
+        owner(0xfe78bf9d611c6aAB734A69810E79e8220278c897, 10), 
+        owner(0xFFE7aFE2b1Fa96045e91e566a903a230CbB99f70, 5), 
+        owner(0x1B86c2909C765eC3Be7Ad953E3Bd6f3c748EE07B, 2), //Wallet E 2% Nirupam Nigham
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2),
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2),
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2),
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2),
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2),
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2), 
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2), 
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2), 
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2), 
+        owner(0xf74a589d778f6D1166DcA66d0B17263403227E55, 2)
+    ];
 
     function _beforeTokenTransfer(address from, address to, uint256 tokenId)
         internal
