@@ -605,7 +605,7 @@ function Home(){
                                 <img src="images/people1.jpg" alt="people" className="img-fluid ms-lg-5" width="200" style={{ boxShadow: '1px 1px 13px -1px #f2fb04' }} />
                                 <img src="images/arrow.png" alt="arrow" width="206" className="align-bottom" style={{ margin: '0px -4em' }} />
                             </Col>
-                            <Col sm={5} className="mt-auto pb-3 ms-3 ms-md-0">
+                            <Col sm={5} className="mt-5 mt-md-auto pb-3 ms-3 ms-md-0">
                                 <h3 className="text-lightyellow font-acierdisplay mb-2" style={ {lineHeight:"26px"} }> * THE FIRST 100 BUYERS OF THIS LEVEL GET THEIR PICTURE IN THE FILM. </h3>
                                 <p className="text-white lineheight1 font-acierdisplay fontsize17px">We must receive your picture before  December 1st, 2022 for your picture 
                                 to be in the final version of the film to be released worldwide January 2023. please note you will not be seen in the early promotional screenings 

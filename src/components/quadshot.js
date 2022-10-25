@@ -45,7 +45,7 @@ function QuadShot (props) {
                         <Col className="w-100 text-center px-sm-4">
                                 <Col className="nft-video w-100 mb-2" style={{ boxShadow: '1px 1px 12px 1px #f98425' }}>
                                 <img src={e.imgUrl} alt="preview-video" className="img-fluid" />
-                                <video className="video" width="100%" height="100%" data-play="hover" preload="auto">
+                                <video loop playsinline className="video" width="100%" height="100%" data-play="hover" preload="auto">
                                     <source src={e.videoUrl} type="video/mp4" />
                                 </video>
                                 </Col>

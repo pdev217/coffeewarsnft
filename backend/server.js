@@ -10,7 +10,7 @@ app.use(cors());
 const hostname = 'localhost';
 const port = 3001;
 
-app.post('/getExcelData', async (req, res) => {
+app.post('/api/getExcelData', async (req, res) => {
     const { fileName } = req.body;
     console.log(fileName)
     readXlsxFile(`../public/metadata/${fileName}.xlsx`).then((rows, errors) => {
