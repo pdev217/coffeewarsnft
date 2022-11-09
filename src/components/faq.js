@@ -20,7 +20,7 @@ class Faq extends Component{
                     <Accordion.Item eventKey="0">
                         <Accordion.Header> Do You Have A Verified Contract?</Accordion.Header>
                         <Accordion.Body>
-                        <p className="text-orange fontsize1-5vmax font-cooperBlack mb-0">  <a className="text-decoration-none text-white" href="https://goerli.etherscan.io/address/0x0BbF2297f1924d84A89B23225e332cea4Bfa8762" target="_blank">The Smart Contract can be Found Here </a> </p>
+                        <p className="text-orange fontsize1-5vmax font-cooperBlack mb-0">  <a className="text-decoration-none text-white" href="https://etherscan.io/address/0x5347bfea4dcdb3d406567fd425d59f3f8a86c11f" target="_blank">The Smart Contract can be Found Here </a> </p>
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="1">
@@ -35,7 +35,7 @@ class Faq extends Component{
                     <Accordion.Item eventKey="2">
                         <Accordion.Header> When Will These Drop? </Accordion.Header>
                         <Accordion.Body>
-                        <p className="text-orange fontsize1-5vmax font-cooperBlack mb-0"> November 1, 2022  </p>
+                        <p className="text-orange fontsize1-5vmax font-cooperBlack mb-0"> November 15, 2022  </p>
                         </Accordion.Body>
                     </Accordion.Item>
 

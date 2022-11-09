@@ -59,14 +59,17 @@ function Header() {
                             <Nav.Link className='text-white' href="#roadmap"> Roadmap </Nav.Link>
                             <Navbar.Brand href="#" className="d-lg-block d-none"><img src="images/logo-brown.png" className='img-fluid' width="110" /></Navbar.Brand>
                             <Col className="d-lg-block d-none"><img src="images/team.png" className="img-fluid" /></Col>
-                            <Col id="countdown" className="timerclock me-sm-4">
-                                    <ul className="d-flex text-center font-acierdisplay list-unstyled text-white m-0">
+                            <Col id="countdown" className="timerclock me-sm-4 position-relative">
+                                <ul className="d-flex text-center font-acierdisplay list-unstyled text-white m-0">
                                     <li className="bg-clock"><span id="days"></span>days</li>
                                     <li className="bg-clock"><span id="hours"></span>Hrs</li>
                                     <li className="bg-clock"><span id="minutes"></span>Mins</li>
                                     <li className="bg-clock"><span id="seconds"></span>Secs</li>
-                                    </ul>
-                                </Col>
+                                </ul>
+                                <div className='bean-fall'>
+                                    <img src="images/Beans-fall-Brewing.gif" />
+                                </div>
+                            </Col>
                                 
                             <Navbar.Brand href="#"><img src="images/logo-orange.png" className='img-fluid' width="110" /></Navbar.Brand>
                             {/* <Nav.Link className='text-white position-relative' href="#"> Connect Wallet <span className="coming-btn">Coming Soon</span></Nav.Link> */}

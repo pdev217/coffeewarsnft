@@ -491,5 +491,15 @@ button.navbar-toggler .navbar-toggler-icon {  filter: invert(1); }
 .custom-top {  margin-top: 1rem; }
   }
   
-  
+
+.bean-fall {
+  position: absolute;
+  top: -3rem;
+  left: -7px;
+  width: 105%;
+}
+
+.bean-fall img {
+  width: 100%;
+}
 

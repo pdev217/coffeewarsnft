@@ -17,10 +17,8 @@ function QuadShot (props) {
         });
     })
 
-    const quadShot = (e) => {
-        e.preventDefault();
-        let fileName = e.target.parentNode.getAttribute("id");
-        props.onClick(fileName)
+    const quadShot = (videoLink, fileName) => {
+        props.onClick(fileName, videoLink)
     }
     
     return(
@@ -52,7 +50,7 @@ function QuadShot (props) {
                                 <h5 className="text-lightyellow font-acierdisplay letterspace1px"> {e.title} </h5>
                                 <button 
                                 id={e.mov} 
-                                onClick={quadShot} 
+                                onClick={() => quadShot(e.videoUrl, e.mov)} 
                                 className="d-inline-block bg-darkpink border-radius6px text-white pt-2 pb-2 px-3 font-acierdisplay text-decoration-none fontsize15px hoverbtn2"
                                 disabled={props.status}
                                 > 

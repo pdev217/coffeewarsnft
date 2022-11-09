@@ -166,6 +166,11 @@ function Home(){
         }
 
         const singleMint = async (e) => {
+            if(!account) {
+                toast.warn("Please connnect to your metamask.");
+                setMintStatus(false)
+                return
+            }
             let balance = await getBalance(account);
             console.log("----balance", balance)
             if(balance > web3.utils.toWei(String(process.env.REACT_APP_SINGLE_PRICE))) {
@@ -212,6 +217,11 @@ function Home(){
 
         const doubleMint = async (e) => {
             e.preventDefault();
+            if(!account) {
+                toast.warn("Please connnect to your metamask.");
+                setMintStatus(false)
+                return
+            }
             let balance = await getBalance(account);
             console.log("----balance", balance)
             if(Number(balance) > Number(web3.utils.toWei(String(process.env.REACT_APP_DOUBLE_PRICE)))) {
@@ -245,7 +255,13 @@ function Home(){
             }
         }
 
-        const quadMint = async (fileName) => {
+        const quadMint = async (fileName, videoLink) => {
+            console.log(videoLink, fileName)
+            if(!account) {
+                toast.warn("Please connnect to your metamask.");
+                setMintStatus(false)
+                return
+            }
             let balance = await getBalance(account);
             console.log("----balance", balance)
             if(Number(balance) > Number(web3.utils.toWei(String(process.env.REACT_APP_QUAD_PRICE)))) {
@@ -266,7 +282,8 @@ function Home(){
 
                 const metadata = {
                     "name": selectedArray[1],
-                    "image": 'https://ipfs.io/ipfs/' + selectedGroup.ipfs_pin_hash+'/' + fileName,
+                    "image": String(videoLink),
+                    // "image": 'https://ipfs.io/ipfs/' + selectedGroup.ipfs_pin_hash+'/' + fileName,
                     "attributes": [
                         {
                             "trait_type": "plaque inscription",
@@ -293,6 +310,8 @@ function Home(){
 
                 let metadataurl = await uploadFileToMoralis(metadata);
                 let tokenUrl = 'https://ipfs.moralis.io/ipfs/' + metadataurl._hash
+
+                console.log(tokenUrl)
 
                 contract.methods
                     .mint(String(tokenUrl))
@@ -328,7 +347,7 @@ function Home(){
             {/* Banner */}
             <Container fluid>
                 <Row>
-                    <Col className="position-relative text-center">
+                    <Col className="position-relative text-center" style={{zIndex: 12345}}>
                             <img src="images/coffee-banner.gif" className="img-fluid w-100" />
 
                             <Col className="position-absolute text-white text-center m-auto banner-text">
@@ -366,7 +385,7 @@ function Home(){
                                 <span className="text-red fontsize2-5vmax d-block"> COFFEE WARS </span> is a RAuCOUS comedy feature film <br/> set in the world of competitive baristas, <br/> In Which Baristas From Around The world <br/> compete to be crowned <span className="text-red d-block"> world barista champion. </span>  
                             </p>
                             <p className="text-lightyellow font-acierdisplay fontsize2-5vmax lineheight1"> It's the story of a ragtag team <br/> who take on the status quo <br/><span className="text-lightgreen d-block"> to make lattes the vegan way: <br/> without cow’s milk </span> to help curb the negative impact <br/> of the dairy industry on climate change. </p>
-                            <p className="text-lightyellow font-acierdisplay fontsize2-5vmax lineheight1"> The Movie Was Paid For by <span className='text-lightgreen d-block'> The Good People Behind Veginvest.  </span> This film Promotes their Message. <br/> <span className='text-red'> Go to </span> <span className='text-lightgreen'> Veginvest.com </span> <span className='text-red'> To learn More. </span>  </p>
+                            <p className="text-lightyellow font-acierdisplay fontsize2-5vmax lineheight1"> The Movie Was Paid For by <span className='text-lightgreen d-block'> The Good People Behind Veginvest.  </span> This film Promotes their Message. <br/> <span className='text-red'> Go to </span> <span className='text-lightgreen'>VegInvest</span><a href='https://veginvesttrust.com' target="_blank" className='text-lightgreen text-decoration-none'>(veginvesttrust.com) </a> <span className='text-red'> To learn More. </span>  </p>
                             <img src="images/veginvest-logo.png" className="img-fluid mb-3" width={150} />
                             <p className="text-lightyellow font-acierdisplay fontsize2-5vmax lineheight1 mb-1"> This nft Campaign will fund <br/> the release of <span className="text-lightred"> Coffee Wars</span> To movie theaters and streamers <br/> and Help finance sequel films in this caffeine Saga! </p>
                     </Col>
@@ -606,9 +625,8 @@ function Home(){
                                 <img src="images/arrow.png" alt="arrow" width="206" className="align-bottom" style={{ margin: '0px -4em' }} />
                             </Col>
                             <Col sm={5} className="mt-5 mt-md-auto pb-3 ms-3 ms-md-0">
-                                <h3 className="text-lightyellow font-acierdisplay mb-2" style={ {lineHeight:"26px"} }> * THE FIRST 100 BUYERS OF THIS LEVEL GET THEIR PICTURE IN THE FILM. </h3>
-                                <p className="text-white lineheight1 font-acierdisplay fontsize17px">We must receive your picture before  December 1st, 2022 for your picture 
-                                to be in the final version of the film to be released worldwide January 2023. please note you will not be seen in the early promotional screenings 
+                                <h3 className="text-lightyellow font-acierdisplay mb-2" style={ {lineHeight:"26px"} }> *The first 100 buyers of this level get their picture or their NFT artwork (completely up to you!) in the film. </h3>
+                                <p className="text-white lineheight1 font-acierdisplay fontsize17px">We must receive your picture before  December 1st, 2022 for .your picture or your NFT artwork to be in the final version of the film to be released worldwide January 2023. please note you will not be seen in the early promotional screenings 
                                 prior to the streamers launch. </p>
                             </Col>
                     </Col>
