@@ -35,7 +35,7 @@ class Faq extends Component{
                     <Accordion.Item eventKey="2">
                         <Accordion.Header> When Will These Drop? </Accordion.Header>
                         <Accordion.Body>
-                        <p className="text-orange fontsize1-5vmax font-cooperBlack mb-0"> November 15, 2022  </p>
+                        <p className="text-orange fontsize1-5vmax font-cooperBlack mb-0"> November 18, 2022  </p>
                         </Accordion.Body>
                     </Accordion.Item>
 
