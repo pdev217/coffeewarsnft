@@ -5,14 +5,13 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "hardhat/console.sol";
 
 contract CoffeeWars is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable{
     using SafeMath for uint256;
-    uint public drop_unlock_time = 1668470400; //November 15th 2022
+    uint public drop_unlock_time = 1668729600;
     string public unlock_preview = "https://cbgb.mypinata.cloud/ipfs/QmQuecHroGgTBD8AS5zgVrJtPd25xus2ZHCefhvS6U9UPH";
-    uint8[15] public walletPercents = [59,10,10,5,2,2,2,2,2,2,2,2,2,2,2];
-    address[15] public wallets = [
+    uint8[] public walletPercents = [59,10,10,5,2,2,2,2,2,2,2,2,2,2,2];
+    address[] public wallets = [
         0xf74a589d778f6D1166DcA66d0B17263403227E55,
         0x653229a1c558b87cba440bb82d296Bd1E572C23D,
         0xfe78bf9d611c6aAB734A69810E79e8220278c897,
@@ -78,9 +77,9 @@ contract CoffeeWars is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable{
     }
 
     function _sendEther() public payable {
-        for(uint i = 0; i < 15; i++) {
+        for(uint i = 0; i < wallets.length; i++) {
             (bool sent,) = wallets[i].call{value: msg.value * walletPercents[i]/100}("");
-            console.log(sent);
+            require(sent, "transfer is failed");
         }
     }
 
@@ -88,8 +87,17 @@ contract CoffeeWars is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable{
         return block.timestamp;
     }
 
-    function setUnlockTime(uint256 newUnlockTime) external onlyOwner {
+    function setUnlockTime(uint256 newUnlockTime) public onlyOwner {
         drop_unlock_time = newUnlockTime;
     }
 
+    function setDivisions(address[] memory newWallets, uint8[] memory percentages) public onlyOwner {
+        require(newWallets.length == percentages.length, "wallets and percentages lenth should be same");
+        wallets = newWallets;
+        walletPercents = percentages;
+    }
+
+    function setUplockPreviw(string memory newPreviwURL) public onlyOwner {
+        unlock_preview = newPreviwURL;
+    }
 }

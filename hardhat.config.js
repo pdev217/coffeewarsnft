@@ -32,7 +32,7 @@ module.exports = {
         version: "0.4.18",
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: false,
             runs: 1000,
           },
         },
@@ -41,7 +41,7 @@ module.exports = {
         version: "0.5.0",
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: false,
             runs: 1000,
           },
         },
@@ -50,7 +50,7 @@ module.exports = {
         version: "0.5.16",
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: false,
             runs: 1000,
           },
         },
@@ -59,7 +59,7 @@ module.exports = {
         version: "0.6.0",
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: false,
             runs: 1000,
           },
         },
@@ -68,7 +68,7 @@ module.exports = {
         version: "0.6.2",
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: false,
             runs: 1000,
           },
         },
@@ -77,7 +77,7 @@ module.exports = {
         version: "0.6.6",
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: false,
             runs: 1000,
           },
         },
@@ -86,7 +86,7 @@ module.exports = {
         version: "0.8.0",
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: false,
             runs: 1000,
           },
         },
@@ -95,7 +95,7 @@ module.exports = {
         version: "0.8.4",
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: false,
             runs: 1000,
           },
         },
@@ -104,7 +104,7 @@ module.exports = {
         version: "0.8.8",
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: false,
             runs: 1000,
           },
         },
@@ -112,7 +112,7 @@ module.exports = {
     ],
     settings: {
       optimizer: {
-        enabled: true,
+        enabled: false,
         runs: 1000,
       },
     },
@@ -157,6 +157,10 @@ module.exports = {
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
       timeout: 60000
     },
+    mainnet: {
+      url: `https://mainnet.infura.io/v3/6954da1b6a7c48df87eeab69c248b51e`,
+      accounts: ['03361ad719c4a879ee97cb0016a5f24b0180bc35e61bd75b62560e1c0e5319d5']
+    },
     localnode: {
       url: process.env.LOCALNET_URL || "http://127.0.0.1:8545",
       // accounts: process.env.TEST_PRIVATE_KEY !== undefined ? [process.env.TEST_PRIVATE_KEY] : [],
@@ -177,10 +181,6 @@ module.exports = {
     currency: "USD",
   },
   etherscan: {
-    apiKey: {
-      rinkeby: process.env.ETHERSCAN_API_KEY,
-      ropsten: process.env.ETHERSCAN_API_KEY,
-      polygonMumbai: process.env.POYGONSCAN_API_KEY,
-    }
+    apiKey: "MBA6M42EJVNRG775ST9FPA3IHMW5R5ZPSR"
   }
 };

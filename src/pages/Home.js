@@ -7,7 +7,7 @@ import QuadShot from '../components/quadshot';
 import Spinner from 'react-bootstrap/Spinner';
 import Accordion from 'react-bootstrap/Accordion';
 import Gifcoffees2 from '../components/gifcoffees2';
-import { singleShots } from '../config/shots';
+import { singleShots, doubleMintURI } from '../config/shots';
 import abi  from "../assets/CoffeeWars.json";
 
 import { useMoralis, useMoralisFile, useChain } from "react-moralis";
@@ -226,23 +226,24 @@ function Home(){
             console.log("----balance", balance)
             if(Number(balance) > Number(web3.utils.toWei(String(process.env.REACT_APP_DOUBLE_PRICE)))) {
                 setMintStatus(true)
-                let selectedGroup = await getDataFromPinata("(DOUBLE SHOT)");
-                let metadataGroup = [];
+                // let selectedGroup = await getDataFromPinata("(DOUBLE SHOT)");
+                // let metadataGroup = [];
     
-                const excelData = await getExcelData("GOLD CUPS Coffee Wars NFT LOG (DOUBLE SHOT)");
+                // const excelData = await getExcelData("GOLD CUPS Coffee Wars NFT LOG (DOUBLE SHOT)");
     
-                for (let i = 2; i < 102; i++) {
-                    // let random = getRandomInt(2, excelData.length)
-                    let metadata = makeMetaData(selectedGroup, excelData, i)
-                    let metadataurl = await uploadFileToMoralis(metadata);
-                    metadataGroup.push(String("https://ipfs.moralis.io/ipfs/" + metadataurl._hash))
-                    console.log(i)
-                }
+                // for (let i = 2; i < 102; i++) {
+                //     // let random = getRandomInt(2, excelData.length)
+                //     let metadata = makeMetaData(selectedGroup, excelData, i)
+                //     let metadataurl = await uploadFileToMoralis(metadata);
+                //     metadataGroup.push(String("https://ipfs.moralis.io/ipfs/" + metadataurl._hash))
+                //     console.log(i)
+                // }
     
-                console.log(metadataGroup)
+                // console.log(metadataGroup)
+                console.log(doubleMintURI)
                 
                 await contract.methods
-                    .doubleMint(metadataGroup)
+                    .doubleMint(doubleMintURI)
                     .send({ from: user.get("ethAddress"), value:web3.utils.toWei(String(process.env.REACT_APP_DOUBLE_PRICE), "ether") })
                     .then(() => setMintStatus(false))
                     .catch((error) => {
