@@ -34,6 +34,7 @@ function Home(){
         const handleShow = () => setShow(true);
 
         useEffect(() => {
+            console.log(process.env.REACT_APP_CONTRACT_ADDRESS);
             const contractCode = new web3.eth.Contract(abi.abi, process.env.REACT_APP_CONTRACT_ADDRESS);
             setContract(contractCode)
         },[])
@@ -201,7 +202,7 @@ function Home(){
                 console.log(tokenURI)
 
                 contract.methods
-                    .mint(String(tokenURI))
+                    .mint(String(tokenURI), 1960724)
                     .send({ from: user.get("ethAddress"), value:web3.utils.toWei(String(process.env.REACT_APP_SINGLE_PRICE), "ether") })
                     .then(() => setMintStatus(false))
                     .catch((error) => {
@@ -243,7 +244,7 @@ function Home(){
                 console.log(doubleMintURI)
                 
                 await contract.methods
-                    .doubleMint(doubleMintURI)
+                    .doubleMint(doubleMintURI, 1960724)
                     .send({ from: user.get("ethAddress"), value:web3.utils.toWei(String(process.env.REACT_APP_DOUBLE_PRICE), "ether") })
                     .then(() => setMintStatus(false))
                     .catch((error) => {
@@ -315,7 +316,7 @@ function Home(){
                 console.log(tokenUrl)
 
                 contract.methods
-                    .mint(String(tokenUrl))
+                    .mint(String(tokenUrl), 1960724)
                     .send({ from: user.get("ethAddress"), value:web3.utils.toWei(String(process.env.REACT_APP_QUAD_PRICE), "ether") })
                     .then(() => setMintStatus(false))
                     .catch((error) => {

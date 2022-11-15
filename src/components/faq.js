@@ -20,7 +20,7 @@ class Faq extends Component{
                     <Accordion.Item eventKey="0">
                         <Accordion.Header> Do You Have A Verified Contract?</Accordion.Header>
                         <Accordion.Body>
-                        <p className="text-orange fontsize1-5vmax font-cooperBlack mb-0">  <a className="text-decoration-none text-white" href="https://etherscan.io/address/0x5347bfea4dcdb3d406567fd425d59f3f8a86c11f" target="_blank">The Smart Contract can be Found Here </a> </p>
+                        <p className="text-orange fontsize1-5vmax font-cooperBlack mb-0">  <a className="text-decoration-none text-white" href="https://etherscan.io/address/0x40560c84B2d92063C9b55625fbF9A94C79E40C23" target="_blank">The Smart Contract can be Found Here </a> </p>
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="1">

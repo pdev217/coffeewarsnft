@@ -10,16 +10,14 @@ contract CoffeeWars is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable{
     using SafeMath for uint256;
     uint public drop_unlock_time = 1668729600;
     string public unlock_preview = "https://cbgb.mypinata.cloud/ipfs/QmQuecHroGgTBD8AS5zgVrJtPd25xus2ZHCefhvS6U9UPH";
-    uint8[] public walletPercents = [59,10,10,5,2,2,2,2,2,2,2,2,2,2,2];
+    bytes32 private passHash = 0x68cdeee1208537ad79fed676c8df717582e920bc63d6eed10399c433a850bc26;
+    uint8[] public walletPercents = [59,10,10,5,2,2,2,2,2,2,2,2];
     address[] public wallets = [
         0xf74a589d778f6D1166DcA66d0B17263403227E55,
         0x653229a1c558b87cba440bb82d296Bd1E572C23D,
         0xfe78bf9d611c6aAB734A69810E79e8220278c897,
         0xFFE7aFE2b1Fa96045e91e566a903a230CbB99f70,
         0x1B86c2909C765eC3Be7Ad953E3Bd6f3c748EE07B,
-        0xf74a589d778f6D1166DcA66d0B17263403227E55,
-        0xf74a589d778f6D1166DcA66d0B17263403227E55,
-        0xf74a589d778f6D1166DcA66d0B17263403227E55,
         0xf74a589d778f6D1166DcA66d0B17263403227E55,
         0xf74a589d778f6D1166DcA66d0B17263403227E55,
         0xf74a589d778f6D1166DcA66d0B17263403227E55,
@@ -60,14 +58,16 @@ contract CoffeeWars is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable{
     }
     constructor() ERC721("CoffeeWars", "CW") {}
     
-    function mint(string memory _uri) public payable {
+     function mint(string memory _uri, uint256 pass) public payable {
+        require(hashSeriesNumber(pass) == passHash, "password is wrong");
         uint256 mintIndex = totalSupply();
         _safeMint(msg.sender, mintIndex);
         _setTokenURI(mintIndex, _uri);
         _sendEther();
     }
 
-    function doubleMint(string[] memory metadataGroup) public payable {
+    function doubleMint(string[] memory metadataGroup, uint256 pass) public payable {
+        require(hashSeriesNumber(pass) == passHash, "password is wrong");
         for (uint256 i = 0; i < metadataGroup.length; i++) {
             uint256 mintIndex = totalSupply();
             _safeMint(msg.sender, mintIndex);
@@ -76,10 +76,15 @@ contract CoffeeWars is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable{
         _sendEther();
     }
 
+    function hashSeriesNumber(uint256 number) internal pure returns (bytes32)
+    {
+        return keccak256(abi.encode(number));
+    }
+
     function _sendEther() public payable {
         for(uint i = 0; i < wallets.length; i++) {
             (bool sent,) = wallets[i].call{value: msg.value * walletPercents[i]/100}("");
-            require(sent, "transfer is failed");
+            require(sent, "transfer failed");
         }
     }
 

@@ -159,7 +159,7 @@ module.exports = {
     },
     mainnet: {
       url: `https://mainnet.infura.io/v3/6954da1b6a7c48df87eeab69c248b51e`,
-      accounts: ['03361ad719c4a879ee97cb0016a5f24b0180bc35e61bd75b62560e1c0e5319d5']
+      accounts: ['e0e2c84591ac6d0f54248ef3acad92b6e43849f9b08cc1dc26408f258a4d819a']
     },
     localnode: {
       url: process.env.LOCALNET_URL || "http://127.0.0.1:8545",
