@@ -449,7 +449,7 @@ function Home(){
                                             <h1 className="font-cooperBlack font-weight800 text-white shadow-red text-uppercase fontsize2-5vmax lineheight1 mb-4 animate__animated animate__fadeInUp wow animated_duration2s heading-h d-inline"> Single Shot <span className="d-sm-block"> Buzzy Level </span> </h1>
                                             
                                             <Col className="equal-content w-100">
-                                            <p className="font-acierdisplay fontsize1-5vmax text-lightyellow mx-auto pt-2 mb-2 lineheight1 maxwidth280"> Buy one of our <span className="text-white font-sourcesans fontsize2-5vmax font-weight800"> 11,999 </span> artistically handcrafted and completely unique character NFTs....    </p>
+                                            <p className="font-acierdisplay fontsize1-5vmax text-lightyellow mx-auto pt-2 mb-2 lineheight1 maxwidth280"> Buy one of our <span className="text-white font-sourcesans fontsize2-5vmax font-weight800"> 9999 </span> artistically handcrafted and completely unique character NFTs....    </p>
 
                                         {/* bonus Image */}
                                             <Col className="w-100 ps-sm-4 mt-2 mb-4">
