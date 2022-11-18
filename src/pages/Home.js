@@ -89,7 +89,7 @@ function Home(){
                     onError: (error) => {
                         console.log(error)
                         setMintStatus(false)
-                        toast.error("Please connect your metamask")
+                        toast.error("There seems to be a problem with the Moralis server. Please refresh the page and link your wallet again.")
                     },
                 }
             );
@@ -166,7 +166,7 @@ function Home(){
             return metadata;
         }
 
-        const singleMint = async (e) => {
+        const singleMint = async (groupName) => {
             if(!account) {
                 toast.warn("Please connnect to your metamask.");
                 setMintStatus(false)
@@ -174,9 +174,9 @@ function Home(){
             }
             let balance = await getBalance(account);
             console.log("----balance", balance)
-            if(balance > web3.utils.toWei(String(process.env.REACT_APP_SINGLE_PRICE))) {
+            if(Number(balance) > web3.utils.toWei(String(process.env.REACT_APP_SINGLE_PRICE))) {
                 setMintStatus(true)
-                let groupName = e.target.parentNode.parentNode.children[1].innerText;
+                // let groupName = e.target.parentNode.parentNode.children[1].innerText;
                 console.log('-----groupName:', groupName)
 
                 let selectedGroup = await getDataFromPinata(groupName+" NFTs");
@@ -539,7 +539,7 @@ function Home(){
                                     <p className="text-orange font-weight700 fontsize17px"> {e.desc} </p>
                                     <button 
                                     className="bg-red border-red fontsize13px font-acierdisplay rounded text-white btn outline-none pt-2 pb-1 hoverbtn1"
-                                    onClick={singleMint}
+                                    onClick={() => singleMint(e.title)}
                                     disabled={mintStatus}
                                     > 
                                         <span className={mintStatus?'d-none':'d-block'}>Mint Single Shot</span>

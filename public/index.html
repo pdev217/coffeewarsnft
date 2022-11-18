@@ -78,10 +78,14 @@
               var seconds = document.getElementById("seconds");
 
               if(day && hours && minutes && seconds) {
-                days.innerText = Math.floor(distance / (day)),
-                hours.innerText = Math.floor((distance % (day)) / (hour)),
-                minutes.innerText = Math.floor((distance % (hour)) / (minute)),
-                seconds.innerText = Math.floor((distance % (minute)) / second);
+                // days.innerText = Math.floor(distance / (day)),
+                // hours.innerText = Math.floor((distance % (day)) / (hour)),
+                // minutes.innerText = Math.floor((distance % (hour)) / (minute)),
+                // seconds.innerText = Math.floor((distance % (minute)) / second);
+                days.innerText = 0,
+                hours.innerText = 0,
+                minutes.innerText = 0,
+                seconds.innerText = 0;
               }
 
             
