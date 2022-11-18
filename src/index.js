@@ -12,7 +12,8 @@ root.render(
   <React.StrictMode>
     <MoralisProvider 
       appId={process.env.REACT_APP_M_ID} 
-      serverUrl={process.env.REACT_APP_M_SERVER_URL}>
+      serverUrl={process.env.REACT_APP_M_SERVER_URL}
+      >
       <App />
     </MoralisProvider>
   </React.StrictMode>
