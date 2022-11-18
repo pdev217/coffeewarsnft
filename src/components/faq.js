@@ -44,7 +44,7 @@ class Faq extends Component{
                         <Accordion.Header>  What is The Minting Price </Accordion.Header>
                         <Accordion.Body>
                         <p className="text-orange fontsize1-5vmax font-cooperBlack mb-0"> 
-                             Single Shot .1 Eth
+                             Single Shot .05 Eth
                              <span className="d-sm-block">  Double Shot 5 Eth </span>
                              Quad Shot 10 Eth </p>
                         </Accordion.Body>

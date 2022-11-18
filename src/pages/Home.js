@@ -21,11 +21,11 @@ import 'react-toastify/dist/ReactToastify.css';
 const web3 = new Web3(Web3.givenProvider);
 
 function Home(){
-        const { account } = useMoralis();
+        const { account, isAuthenticated } = useMoralis();
         const { saveFile } = useMoralisFile();
         const [show, setShow] = useState(false);
         const [mintStatus, setMintStatus] = useState(false);
-        const { switchNetwork, chainId, chain } = useChain();
+        const { switchNetwork, chainId } = useChain();
         
         const { user } = useMoralis();
         const [contract, setContract] = useState('');
@@ -85,11 +85,16 @@ function Home(){
                 {
                     type: "base64",
                     saveIPFS: true,
+                    useMasterKey:true,
                     onSuccess: (result) => {return result.ipfs()},
                     onError: (error) => {
                         console.log(error)
                         setMintStatus(false)
-                        toast.error("There seems to be a problem with the Moralis server. Please refresh the page and link your wallet again.")
+                        if(!isAuthenticated) {
+                            toast.warn("Please connect Metamask!")
+                        }else {
+                            alert("There seems to be a problem with the Moralis server. Please refresh the page and link your wallet again.")
+                        }
                     },
                 }
             );
@@ -329,6 +334,13 @@ function Home(){
             }
         }
 
+        const randomMint = async () => {
+            // console.log(singleShots.length)
+            let randomInt = getRandomInt(1, singleShots.length)
+            // console.log(singleShots[randomInt])
+            singleMint(singleShots[randomInt].title)
+        }
+
         return(
             <div className="AppMain">
             <Header />
@@ -345,11 +357,29 @@ function Home(){
                 pauseOnHover
                 theme="light"
             />
-
+            <Container className='position-relative text-center text-lg-left'>
+                <button 
+                    className="mint-button bg-red border-red fontsize13px font-acierdisplay rounded text-white btn outline-none pt-2 pb-1 hoverbtn1"
+                    onClick={() => randomMint()}
+                    disabled={mintStatus}
+                > 
+                    <span className={mintStatus?'d-none':'d-block'}>Mint Now</span>
+                    <div className={mintStatus?'d-block':'d-none'}>
+                        <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                        /> loading
+                    </div>
+                </button>
+                {/* <a role="button" className='mint-button' onClick={()=>randomMint()}>Mint now</a> */}
+            </Container>
             {/* Banner */}
             <Container fluid>
                 <Row>
-                    <Col className="position-relative text-center" style={{zIndex: 12345}}>
+                    <Col className="position-relative text-center mt-3" style={{zIndex: 12345}}>
                             <img src="images/coffee-banner.gif" className="img-fluid w-100" />
 
                             <Col className="position-absolute text-white text-center m-auto banner-text">

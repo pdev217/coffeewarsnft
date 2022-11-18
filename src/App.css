@@ -503,3 +503,23 @@ button.navbar-toggler .navbar-toggler-icon {  filter: invert(1); }
   width: 100%;
 }
 
+.mint-button {
+  color: white;
+  text-decoration: none;
+  font-family: Acier-display;
+  font-size: 24px;
+  position: absolute;
+  bottom: 0;
+  right: 6.5%;
+}
+
+.mint-button:hover {
+  color: white;
+}
+
+@media (max-width: 800px) {
+  .mint-button {
+    position: relative;
+    right: 0;
+  }
+}
