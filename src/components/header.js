@@ -128,6 +128,7 @@ function Header() {
                     
                 </Row>
             </Container>
+            <a className='text-white position-relative font-acierdisplay text-decoration-none mobile-wallet-connect d-md-none' onClick={() => isAuthenticated?logOut():setModalShow(true)}> {isAuthenticated?"Disconnect":"Connect Wallet"} </a>
         </div>
         
     );

@@ -357,7 +357,7 @@ function Home(){
                 pauseOnHover
                 theme="light"
             />
-            <Container className='position-relative text-center text-lg-left'>
+            <Container className='position-relative text-end text-lg-left'>
                 <button 
                     className="mint-button bg-red border-red fontsize13px font-acierdisplay rounded text-white btn outline-none pt-2 pb-1 hoverbtn1"
                     onClick={() => randomMint()}
