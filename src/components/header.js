@@ -1,5 +1,5 @@
-import React,{useEffect} from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
+import React,{useEffect, useState} from 'react';
+import {Container, Row, Col, Modal, Button} from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useMoralis } from "react-moralis";
@@ -10,25 +10,41 @@ import 'react-toastify/dist/ReactToastify.css';
 function Header() {
 
     const { authenticate, isAuthenticated, account, logout } = useMoralis();
+    const [modalShow, setModalShow] = useState(false);
     
     const logOut = async () => {
         await logout();
         console.log("logged out");
     }
 
-    let flag = 0;
-    useEffect(() => {
-        if(window.ethereum) {
-            if(!account) {
-                authenticate()
-            }
+    const login = async (type) => {
+        if(type == "metamask") {
+            await authenticate();
         }else {
-            if(flag == 0) {
-                toast.warn('Please install 🦊Metamask');
-            }
+            await authenticate({ provider: "walletconnect", chainId: 1 })
+            .then(function (user) {
+              console.log(user?.get("ethAddress"));
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
         }
-        flag ++;
-    }, [account, authenticate])
+        setModalShow(false)
+    }
+
+    let flag = 0;
+    // useEffect(() => {
+    //     if(window.ethereum) {
+    //         if(!account) {
+    //             authenticate()
+    //         }
+    //     }else {
+    //         if(flag == 0) {
+    //             toast.warn('Please install 🦊Metamask');
+    //         }
+    //     }
+    //     flag ++;
+    // }, [account, authenticate])
   
 
     console.log("---isAuthenticated", isAuthenticated)
@@ -48,6 +64,34 @@ function Header() {
                 pauseOnHover
                 theme="light"
             />
+            <Modal
+                size="md"
+                centered
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            >
+                <Modal.Header className='border-0'>
+                    <Modal.Title id="contained-modal-title-vcenter" className='w-100'>
+                        <div className='d-flex align-items-center justify-content-between w-100'>
+                            Select Wallet
+                            <a href='#' className='btn-default'>
+                                <img  src='/icons/close.png' alt='close' onClick={() => setModalShow(false)}/>
+                            </a>
+                        </div>
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Button className='wallet w-100' onClick={() => login('metamask')}>
+                        <img src="/icons/metamask.webp" alt='metamask' />
+                      Metamask  
+                    </Button>
+                    <Button className='wallet w-100' onClick={() => login('walletConnect')}>
+                    <img src="/icons/wallet_connect.png" alt='metamask' />
+                      Wallet Connect  
+                    </Button>
+                </Modal.Body>
+            </Modal>
+
             <Container fluid className='pt-2 pb-2'>
                 <Row className='px-2'>
                     <Navbar expand="lg" className="header-navbar">
@@ -73,7 +117,7 @@ function Header() {
                                 
                             <Navbar.Brand href="#"><img src="images/logo-orange.png" className='img-fluid' width="110" /></Navbar.Brand>
                             {/* <Nav.Link className='text-white position-relative' href="#"> Connect Wallet <span className="coming-btn">Coming Soon</span></Nav.Link> */}
-                            <Nav.Link className='text-white position-relative' onClick={isAuthenticated?logOut:authenticate}> {isAuthenticated?"Disconnect":"Connect Wallet"} </Nav.Link>
+                            <Nav.Link className='text-white position-relative' onClick={() => isAuthenticated?logOut():setModalShow(true)}> {isAuthenticated?"Disconnect":"Connect Wallet"} </Nav.Link>
                             <Nav.Link className='text-white' href="#cafeine-pump"> NFTs </Nav.Link>
                             <Nav.Link className='text-white' href="https://discord.gg/KDF5HKa3mb" target="_blank"> Discord </Nav.Link>
                         </Nav>
